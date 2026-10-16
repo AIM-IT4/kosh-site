@@ -11,10 +11,12 @@
   <meta property="og:image" content="https://kosh.runs-on.dev/assets/hero.png">
   <meta property="og:url" content="https://kosh.runs-on.dev/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#F7F7F5">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F7F7F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1110" media="(prefers-color-scheme: dark)">
   <style>
     :root {
-      --bg: #F7F7F5; --card: #FFFFFF; --line: #EAEAE7; --ink: #111111; --muted: #5F6368; --soft: #9AA0A6;
+      --bg: #F7F7F5; --card: #FFFFFF; --line: #EAEAE7; --ink: #111111; --muted: #5F6368; --soft: #6B7177;
       --emerald: #059669; --emerald-dark: #047857; --tint: #ECFDF5; --radius: 20px;
     }
     * { box-sizing: border-box; }
@@ -116,6 +118,22 @@
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+    /* dark mode: follows the phone's setting, like the app */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F1110; --card: #17191A; --line: #26292B; --ink: #F2F3F1; --muted: #A7ADB3; --soft: #8A9097;
+        --emerald: #34D399; --emerald-dark: #6EE7B7; --tint: rgba(52,211,153,.14);
+      }
+      nav { background: rgba(15,17,16,.82); }
+      .btn-ink { background: #F2F3F1; color: #0F1110; }
+      .btn-ink:hover { background: #FFFFFF; }
+      .step::before { color: #0F1110; }
+      .phone { background: #000; box-shadow: 0 0 0 1px #2A2D30, 0 30px 60px rgba(0,0,0,.55); }
+      .gallery .phone { box-shadow: 0 0 0 1px #2A2D30, 0 16px 32px rgba(0,0,0,.45); }
+      .band { background: #17191A; border: 1px solid #26292B; }
+      .band li { background: #0F1110; border-color: #26292B; }
+    }
 
     @media (max-width: 900px) {
       .hero, .row, .band { grid-template-columns: 1fr; }
